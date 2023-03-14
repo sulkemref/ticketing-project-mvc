@@ -1,5 +1,6 @@
 package com.cydeo.controller;
 
+import com.cydeo.converter.RoleDtoConverter;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
@@ -31,12 +32,9 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    private String insertUser(@ModelAttribute("user") UserDTO user,Model model){
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles",roleService.findAll());
+    private String insertUser(@ModelAttribute("user") UserDTO user){
         userService.save(user);
-        model.addAttribute("users",userService.findAll());
-        return "/user/create";
+        return "redirect:/user/create";
     }
 
 
