@@ -6,10 +6,9 @@ import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/user")
@@ -32,10 +31,29 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    private String insertUser(@ModelAttribute("user") UserDTO user){
+    public String insertUser(@ModelAttribute("user") UserDTO user){
         userService.save(user);
         return "redirect:/user/create";
     }
 
+    @GetMapping("/update/{userName}")
+    public String editUser(@PathVariable("userName") String userName, Model model){
+        model.addAttribute("user", userService.findById(userName));
+        model.addAttribute("roles",roleService.findAll());
+        model.addAttribute("users",userService.findAll());
+        return "/user/update";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") UserDTO user){ // @ModelAttribute("user") don't need
+        userService.update(user);
+        return "redirect:/user/create";
+    }
+
+    @GetMapping("/delete/{userName}")
+    public String deleteUser(@PathVariable("userName") String userName){
+        userService.deleteById(userName);
+        return "redirect:/user/create";
+    }
 
 }
