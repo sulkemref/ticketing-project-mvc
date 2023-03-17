@@ -60,4 +60,11 @@ public class ProjectController {
         projectService.update(project);
         return "redirect:/project/create";
     }
+
+    @GetMapping("/manager/project-status")
+    public String getProjectByManager(Model model){
+        UserDTO manager = userService.findById("john@cydeo.com");
+
+        return "/manager/project-status";
+    }
 }
