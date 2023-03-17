@@ -32,7 +32,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form action="#">
+                                    <form th:object="${task}" th:action="@{/task/create}" th:method="post">
 
                                         <div class="row">
                                             <div class="col">
