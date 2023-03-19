@@ -68,10 +68,13 @@ public class ProjectController {
         UserDTO manager = userService.findById("john@cydeo.com");
 
         List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
-
         model.addAttribute("projects",projects);
 
-
         return "/manager/project-status";
+    }
+    @GetMapping("/manager/complete/{projectCode}")
+    public String managerCompleteProject(@PathVariable("projectCode")String projectCode){
+        projectService.completeProject(projectService.findById(projectCode));
+        return "redirect:/project/manager/project-status";
     }
 }

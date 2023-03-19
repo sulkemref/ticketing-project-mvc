@@ -21,7 +21,7 @@ public class ProjectDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private String projectDetail;
-    private Status ptojectStatus;
+    private Status projectStatus;
     private int completeTaskCounts;
     private int unfinishedTaskCounts;
 
@@ -32,6 +32,6 @@ public class ProjectDTO {
         this.startDate = startDate;
         this.endDate = endDate;
         this.projectDetail = projectDetail;
-        this.ptojectStatus = ptojectStatus;
+        this.projectStatus = ptojectStatus;
     }
 }
