@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -26,11 +23,15 @@ public class UserDTO {
     @Email
     private String userName;
     @NotBlank
-    @Pattern(regexp = )
+    @Pattern(regexp = "(?=.\\d)(?=.[a-z])(?=.*[A-Z]).{4,}")
     private String passWord;
     private boolean enabled;
+    @NotBlank
+    @Pattern(regexp = "^\\d{10}$")
     private String phone;
+    @NotNull
     private RoleDTO role;
+    @NotNull
     private Gender gender;
 
 }

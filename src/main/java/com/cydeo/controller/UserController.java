@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -28,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String insertUser(@ModelAttribute("user") UserDTO user){
+    public String insertUser(@Valid @ModelAttribute("user") UserDTO user){
         userService.save(user);
         return "redirect:/user/create";
     }
@@ -42,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute("user") UserDTO user){ // @ModelAttribute("user") don't need
+    public String updateUser(@Valid @ModelAttribute("user") UserDTO user){ // @ModelAttribute("user") don't need
         userService.update(user);
         return "redirect:/user/create";
     }
