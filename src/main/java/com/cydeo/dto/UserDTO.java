@@ -31,7 +31,7 @@ public class UserDTO {
     private String phone;
     @NotNull
     private RoleDTO role;
-    @NotNull
+//    @NotNull
     private Gender gender;
 
 }

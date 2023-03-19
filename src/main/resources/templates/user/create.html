@@ -38,7 +38,12 @@
                                                 <div class="form-group">
                                                     <label for="firstname" class="col-form-label">First Name</label>
                                                     <input id="firstname" type="text" placeholder="first name" class="form-control" th:field="*{firstName}">
-
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('firstName')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('firstName')}"
+                                                                th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -46,6 +51,12 @@
                                                 <div class="form-group">
                                                     <label for="lastname" class="col-form-label">Last Name</label>
                                                     <input id="lastname" type="text" placeholder="last name" class="form-control" th:field="*{lastName}">
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('lastName')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('lastName')}"
+                                                                th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,6 +114,12 @@
                                                         <option th:value ="''" th:text="Select"></option>
                                                         <option th:each="role : ${roles}" th:text="${role.description}" th:value="${role.id}"></option>
                                                     </select>
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('role')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('role')}"
+                                                                th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
