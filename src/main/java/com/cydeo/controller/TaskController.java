@@ -79,4 +79,9 @@ public class TaskController {
         return "/task/archive";
     }
 
+    @GetMapping("/employee/edit/{id}")
+    public String employeeEditTask(@PathVariable Long id){
+        return "/task/status-update";
+    }
+
 }
