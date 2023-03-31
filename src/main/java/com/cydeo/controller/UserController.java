@@ -34,6 +34,7 @@ public class UserController {
     public String insertUser(@Valid @ModelAttribute("user") UserDTO user, BindingResult bindingResult, Model model){
 
         if(bindingResult.hasErrors()){
+            System.out.println(bindingResult.getAllErrors());
             model.addAttribute("roles",roleService.findAll());
             model.addAttribute("users",userService.findAll());
             return "/user/create";

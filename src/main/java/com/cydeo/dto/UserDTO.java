@@ -23,15 +23,15 @@ public class UserDTO {
     @Email
     private String userName;
     @NotBlank
-    @Pattern(regexp = "(?=.\\d)(?=.[a-z])(?=.*[A-Z]).{4,}")
+//    @Pattern(regexp = "(?=.\\d)(?=.[a-z])(?=.*[A-Z]).{4,}")
     private String passWord;
     private boolean enabled;
     @NotBlank
-    @Pattern(regexp = "^\\d{10}$")
+//    @Pattern(regexp = "^\\d{10}$")
     private String phone;
     @NotNull
     private RoleDTO role;
-//    @NotNull
+    @NotNull
     private Gender gender;
 
 }
